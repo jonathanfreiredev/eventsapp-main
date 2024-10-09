@@ -1,0 +1,6 @@
+[submodule "eventsapp"]
+	path = eventsapp
+	url = https://github.com/jonathanfreiredev/eventsapp.git
+[submodule "eventsapp-backend"]
+	path = eventsapp-backend
+	url = https://github.com/jonathanfreiredev/eventsapp-backend.git
