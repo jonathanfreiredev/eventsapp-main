@@ -16,41 +16,18 @@ services:
     build:
       context: ./eventsapp-backend
       dockerfile: Dockerfile
+    restart: always
     env_file:
       - ./eventsapp-backend/.env
     depends_on:
       - postgres
     volumes:
       - ./eventsapp-backend/src:/app/src
-    expose:
-      - "4000"
+    ports:
+      - "4000:4000"
     networks:
       - db-network
-      - eventsapp-network
-
-  frontend:
-    container_name: frontend
-    build:
-      context: ./eventsapp
-      dockerfile: Dockerfile
-    env_file:
-      - ./eventsapp/.env
-    depends_on:
-      - backend
-    volumes:
-      - ./eventsapp/app:/app/app
-      - ./eventsapp/assets:/app/assets
-      - ./eventsapp/components:/app/components
-      - ./eventsapp/constants:/app/constants
-      - ./eventsapp/hooks:/app/hooks
-      - ./eventsapp/scripts:/app/scripts
-    ports:
-      - "8081:8081"
-    networks:
-      - eventsapp-network
 
 networks:
-  eventsapp-network:
-    driver: bridge
   db-network:
     driver: bridge
