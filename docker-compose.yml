@@ -10,6 +10,8 @@ services:
       - "5432:5432"
     networks:
       - db-network
+    volumes:
+      - ./eventsapp-backend/src/database/seed.sql:/seed.sql
 
   backend:
     container_name: backend
@@ -27,6 +29,7 @@ services:
       - "4000:4000"
     networks:
       - db-network
+    
 
 networks:
   db-network:
